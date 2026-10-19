@@ -49,7 +49,19 @@ button,input,select,textarea{font:inherit;color:inherit}
 .drop{border:2px dashed var(--line);border-radius:12px;padding:14px;text-align:center;cursor:pointer;background:var(--paper)}
 .drop.over{border-color:var(--teal);background:var(--teal-soft)}
 .swatches{display:flex;gap:8px;flex-wrap:wrap}.sw{width:30px;height:30px;border-radius:50%;border:3px solid transparent;cursor:pointer}.sw[aria-pressed=true]{border-color:var(--ink)}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}.seg button{border:0;background:var(--card);padding:5px 12px;cursor:pointer}.seg button[aria-pressed=true]{background:var(--teal);color:#fff}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}.seg button{border:0;background:var(--card);padding:5px 12px;cursor:pointer}.seg button+button{border-inline-start:1px solid var(--line)}.seg button[aria-pressed=true]{background:var(--teal);color:#fff;font-weight:600}
+.seg.wide{display:flex}.seg.wide button{flex:1;padding:6px 12px;background:var(--paper)}.seg.wide button[aria-pressed=true]{background:var(--teal)}
+.sig-slots{display:flex;flex-direction:column;gap:10px}
+.sig-slot{border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:var(--paper);display:flex;flex-direction:column;gap:7px}
+.sig-prev{height:70px;border:1.5px dashed var(--line);border-radius:9px;background:#fff;display:grid;place-items:center;color:#8a9b99;font-size:12px;overflow:hidden}
+.sig-prev img{max-height:100%;max-width:100%;object-fit:contain}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:grid;place-items:center;z-index:60;padding:16px}
+.modal .card{background:var(--card);border-radius:14px;padding:16px;margin:0;max-width:680px;width:100%;display:flex;flex-direction:column;gap:12px;direction:rtl}
+.modal canvas{width:100%;aspect-ratio:5/2;background:#fff;border:1px solid var(--line);border-radius:10px;touch-action:none;cursor:crosshair}
+.pbar{display:flex;gap:8px 12px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;margin-bottom:10px}
+.pbar label{font-size:13px;color:var(--muted);font-weight:500}
+.pbar select,.pbar input{border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:5px 10px}
+.pbar input{flex:1;min-width:160px}
 .pv{position:sticky;top:120px}
 .pvbox{background:#e9efef;border-radius:var(--r);padding:12px;overflow:hidden}
 .pvscale{transform-origin:top right}
@@ -58,7 +70,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .msg{font-size:13.5px;margin-top:8px}.msg.ok{color:var(--ok)}.msg.err{color:var(--bad)}
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 18px;border-radius:99px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:50}.toast.show{opacity:1}
 /* ===== صفحة التقرير A4 ===== */
-.sheet{--c:#0a6d73;--cs:#e3f1f0;width:210mm;height:297mm;background:#fff;color:#1d2b2c;direction:rtl;font-family:var(--f-b);padding:9mm 10mm 8mm;display:flex;flex-direction:column;gap:3.2mm;position:relative;overflow:hidden;font-size:11.5pt;line-height:1.6}
+.sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact;--c:#0a6d73;--cs:#e3f1f0;width:210mm;height:297mm;background:#fff;color:#1d2b2c;direction:rtl;font-family:var(--f-b);padding:9mm 10mm 8mm;display:flex;flex-direction:column;gap:3.2mm;position:relative;overflow:hidden;font-size:11.5pt;line-height:1.6}
 .sh-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:4mm;padding-bottom:3mm;border-bottom:1.2mm solid var(--c)}
 .sh-org{font-size:9.6pt;line-height:1.55;font-weight:600}.sh-org div:first-child{font-weight:700}
 .sh-head .logo{height:19mm}.sh-head .vis{height:15mm;justify-self:end}
@@ -77,7 +89,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 .sh-photos div{border-radius:2.5mm;overflow:hidden;background:var(--cs) center/cover no-repeat;border:.35mm solid var(--cs);min-height:0}
 .sh-photos .ph0{display:grid;place-items:center;color:var(--c);font-size:9pt;opacity:.7}
 .sh-foot{display:grid;grid-template-columns:1fr 1fr auto;gap:4mm;align-items:end;font-size:9.8pt}
-.sh-sig{text-align:center;line-height:1.5}.sh-sig b{display:block;color:var(--c);font-size:9pt}.sh-sig span{display:block;min-height:5mm}
+.sh-sig{text-align:center;line-height:1.5}.sh-sig b{display:block;color:var(--c);font-size:9pt}.sh-sig span{display:block;min-height:5mm}.sh-sig .sig-img{display:block;margin:0 auto;max-height:13mm;max-width:55mm;object-fit:contain}
+.sh-two.one{grid-template-columns:1fr}.sh-none{color:#5b7476}
 .sh-qr{display:flex;align-items:center;gap:2mm;font-size:8pt;color:#5b7476;line-height:1.4;max-width:46mm}.sh-qr svg{width:20mm;height:20mm;flex:none}
 .sh-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-d);font-weight:800;font-size:62pt;color:rgba(10,109,115,.13);transform:rotate(-28deg);pointer-events:none;white-space:nowrap}
 .sh-brand{position:absolute;bottom:2.2mm;left:10mm;font-size:6.5pt;color:#9bb}
@@ -118,17 +131,20 @@ select::-ms-expand{display:none}
    <div class="f"><label for="s_admin">الإدارة العامة للتعليم بـ</label><input id="s_admin" data-s="admin" placeholder="منطقة الرياض"></div>
    <div class="f"><label for="s_office">مكتب التعليم</label><input id="s_office" data-s="office" placeholder="مكتب تعليم الشمال"></div>
    <div class="f"><label for="s_school">المدرسة</label><input id="s_school" data-s="school"></div>
-   <div class="f"><label for="s_name">اسم المعلم/ة (المنفذ)</label><input id="s_name" data-s="name"></div>
+   <div class="f"><label for="s_name">اسم المعلم/ـة (المنفذ/ـة)</label><input id="s_name" data-s="name"></div>
    <div class="f"><label for="s_role">الصفة</label><input id="s_role" data-s="role" placeholder="معلم لغتي"></div>
-   <div class="f"><label for="s_principal">قائد/ة المدرسة</label><input id="s_principal" data-s="principal"></div>
+   <div class="f"><label for="s_principal">قائد/ـة المدرسة</label><input id="s_principal" data-s="principal"></div>
+   <div class="f" style="margin-top:4px"><label>الجنس <span class="note">(تُصاغ الألقاب بحسبه)</span></label><div class="seg wide" id="genderSeg" role="group" aria-label="الجنس"><button type="button" data-g="m">ذكر</button><button type="button" data-g="f">أنثى</button></div></div>
   </div>
+  <div class="card"><h2>التواقيع</h2><p class="note" style="margin:0 0 8px">تظهر في التقرير مكان «التوقيع: ……». ارسمها أو ارفع صورتها.</p><div class="sig-slots" id="sigSlots"></div></div>
  </aside>
  <main id="editor"></main>
- <section class="pv"><div class="row" style="margin-bottom:8px"><h2 style="font-size:15px">المعاينة</h2><div class="spacer"></div><span class="note" id="pvNote"></span></div><div class="pvbox" id="pvbox"><div class="pvscale" id="pvscale"></div></div></section>
+ <section class="pv"><div class="row" style="margin-bottom:8px"><h2 style="font-size:15px">المعاينة</h2><div class="spacer"></div><span class="note" id="pvNote"></span></div><div class="pbar"><label for="optEmpty">الأقسام الفارغة</label><select id="optEmpty"><option value="msg">تظهر مع عبارة</option><option value="blank">تظهر فارغة بلا أي كلام</option><option value="hide">تُخفى من التقرير</option></select><input id="optEmptyMsg" placeholder="اكتب العبارة التي تظهر" aria-label="العبارة التي تظهر في القسم الفارغ"></div><div class="pvbox" id="pvbox"><div class="pvscale" id="pvscale"></div></div></section>
 </div>
 </div>
 <div class="print-only" id="printArea"></div>
 <div class="toast" id="toast"></div>
+<input type="file" id="sigPick" accept="image/*" hidden>
 <script>
 (function(){
 "use strict";
@@ -142,7 +158,7 @@ var ITEMS=["أداء الواجبات الوظيفية","التفاعل مع ا�
 /* ===== قوالب جاهزة: عنوان، عنصر، أهداف، وصف، نتائج ===== */
 var T={
 "درس تطبيقي":{i:1,g:["تبادل الخبرات التربوية بين الزملاء","تطبيق استراتيجية تدريس حديثة أمام المجتمع المهني","تحسين الممارسات التدريسية داخل الصف"],d:"نُفّذ درس تطبيقي بحضور عدد من الزملاء، طُبّقت فيه استراتيجية ( ) في درس ( )، مع توظيف التقنية وأوراق العمل، وخُتم بنقاش حول جوانب القوة وفرص التحسين.",r:"إشادة الحضور بالممارسات المطبّقة، وتوصية بتعميم الاستراتيجية في دروس القسم."},
-"زيارة تبادلية":{i:1,g:["الاطلاع على ممارسات الزملاء التدريسية","تبادل الخبرات وتطوير الأداء المهني","نقل الممارسات المتميزة إلى صفي"],d:"زيارة صفية تبادلية للزميل ( ) في مادة ( ) للصف ( )، رُصدت فيها الاستراتيجيات وإدارة الصف وأساليب التقويم، ثم نوقشت الملاحظات بعد الزيارة.",r:"الاستفادة من أسلوب ( ) وتطبيقه في دروسي القادمة."},
+"زيارة تبادلية":{i:1,g:["الاطلاع على ممارسات الزملاء التدريسية","تبادل الخبرات وتطوير الأداء المهني","نقل الممارسات المتميزة إلى صفي"],d:"زيارة صفية تبادلية للزميل/ـة ( ) في مادة ( ) للصف ( )، رُصدت فيها الاستراتيجيات وإدارة الصف وأساليب التقويم، ثم نوقشت الملاحظات بعد الزيارة.",r:"الاستفادة من أسلوب ( ) وتطبيقه في دروسي القادمة."},
 "مجتمع تعلم مهني":{i:1,g:["تطوير الممارسات المهنية بالتعلم المشترك","مناقشة نتائج المتعلمين وتحديد الاحتياجات","بناء حلول مشتركة لتحسين التعلم"],d:"لقاء مجتمع التعلم المهني لمعلمي ( ) لمناقشة موضوع ( )، تخلله عرض تجارب الأعضاء وتحليل الشواهد والاتفاق على إجراءات التطبيق.",r:"الاتفاق على تطبيق ( ) ومتابعة أثره في اللقاء القادم."},
 "حضور دورة / ورشة تدريبية":{i:1,g:["تنمية المهارات المهنية والتخصصية","مواكبة المستجدات التربوية","نقل أثر التدريب إلى الميدان"],d:"حضور برنامج تدريبي بعنوان ( ) المقدَّم من ( ) بواقع ( ) ساعات تدريبية، تناول محاور ( ).",r:"تطبيق مهارة ( ) في الصف ونقل أثر التدريب للزملاء."},
 "تقديم ورشة / برنامج للزملاء":{i:1,g:["نقل الخبرات للزملاء","المساهمة في التنمية المهنية بالمدرسة","نشر الممارسات المتميزة"],d:"تقديم ورشة عمل بعنوان ( ) لعدد ( ) من الزملاء، تضمنت جانباً نظرياً وتطبيقات عملية ونماذج جاهزة للاستخدام.",r:"تفاعل الحضور وتطبيق عدد منهم للمهارة في دروسهم."},
@@ -169,7 +185,16 @@ var THEMES=[["#0a6d73","#e3f1f0"],["#1b7d5a","#e2f2ea"],["#1d4f8a","#e5edf7"],["
 var DB=null;function idb(){return new Promise(function(ok){try{var r=indexedDB.open("mj_shawahid",1);r.onupgradeneeded=function(){r.result.createObjectStore("kv")};r.onsuccess=function(){DB=r.result;ok(DB)};r.onerror=function(){ok(null)}}catch(e){ok(null)}})}
 function load(){return idb().then(function(db){if(!db)return null;return new Promise(function(ok){try{var q=db.transaction("kv").objectStore("kv").get("state");q.onsuccess=function(){ok(q.result||null)};q.onerror=function(){ok(null)}}catch(e){ok(null)}})})}
 var saveT;function save(){clearTimeout(saveT);saveT=setTimeout(function(){if(!DB)return;try{DB.transaction("kv","readwrite").objectStore("kv").put(JSON.parse(JSON.stringify(S)),"state")}catch(e){toast("تعذّر الحفظ — مساحة المتصفح ممتلئة")}},400)}
-var S;
+var S,DIRTY=true,paT=null,PA_ALL=false,DEF_EMPTY="—",DEF_PH="أضف صور الشاهد";
+function normS(){S.school=S.school||{};if(!("gender" in S.school))S.school.gender="";S.sigs=Object.assign({me:"",boss:""},S.sigs||{});S.opt=Object.assign({empty:"msg",emptyMsg:DEF_EMPTY},S.opt||{})}
+/* ===== الأرقام العربية وصياغة الألقاب بحسب الجنس (على كل نص ظاهر) ===== */
+var GEN_RE=/([^\s<>"'،,.()«»]+)\/ـة/g,ARD="٠١٢٣٤٥٦٧٨٩";
+function gtx(s){var g=S&&S.school&&S.school.gender;if(g==="m")s=s.replace(GEN_RE,"$1");else if(g==="f")s=s.replace(GEN_RE,"$1ة");return s.replace(/[0-9]/g,function(d){return ARD[d]})}
+var ORIG=new WeakMap(),LAST=new WeakMap();
+function skipTx(n){for(var p=n.parentNode;p&&p.nodeType===1;p=p.parentNode){var t=p.tagName;if(t==="SCRIPT"||t==="STYLE"||t==="TEXTAREA"||p.id==="actPanel"||p.getAttribute("dir")==="ltr")return true}return false}
+function tx(n){if(skipTx(n))return;var cu=n.nodeValue;if(!ORIG.has(n)||LAST.get(n)!==cu)ORIG.set(n,cu);var o=gtx(ORIG.get(n));LAST.set(n,o);if(o!==cu)n.nodeValue=o}
+function txAll(root){var w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT),n;while((n=w.nextNode()))tx(n)}
+try{new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==="characterData")tx(m.target);else Array.prototype.forEach.call(m.addedNodes,function(a){if(a.nodeType===3)tx(a);else if(a.nodeType===1)txAll(a)})})}).observe(document.body,{subtree:true,childList:true,characterData:true})}catch(e){}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
 function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
 function newReport(type){type=type||"تطبيق استراتيجية تدريس";var t=T[type];return {id:uid(),type:type,title:type==="تقرير مخصّص"?"":type,date:today(),place:"",benef:"",count:"",item:t.i,goals:t.g.join("\n"),desc:t.d,results:t.r,photos:[],theme:0,qr:"",showResults:true}}
@@ -184,7 +209,7 @@ function renderList(){$("#list").innerHTML=S.reports.map(function(r){return '<bu
 /* ===== المحرر ===== */
 function renderEditor(){var r=cur();
  var h='<div class="card"><div class="row"><h2 style="margin:0">بيانات التقرير</h2><div class="spacer"></div><button class="btn small" id="dup">نسخ التقرير</button><button class="btn small danger" id="del">حذف</button></div>'+
- '<div class="grid" style="margin-top:10px"><div class="f wide"><label for="r_type">نوع الشاهد (يعبّئ الأهداف والوصف تلقائياً)</label><select id="r_type">'+Object.keys(T).map(function(k){return '<option'+(k===r.type?" selected":"")+'>'+k+'</option>'}).join("")+'</select></div>'+
+ '<div class="grid" style="margin-top:10px"><div class="f wide"><label for="r_type">نوع الشاهد (يعبّئ الأهداف والوصف تلقائياً)</label><select id="r_type">'+Object.keys(T).map(function(k){return '<option value="'+esc(k)+'"'+(k===r.type?" selected":"")+'>'+k+'</option>'}).join("")+'</select></div>'+
  '<div class="f wide"><label for="r_title">عنوان التقرير</label><input id="r_title" data-r="title" value="'+esc(r.title)+'" maxlength="90"></div>'+
  '<div class="f"><label for="r_date">التاريخ (يُكتب هجري وميلادي)</label><input type="date" id="r_date" data-r="date" value="'+esc(r.date)+'"></div>'+
  '<div class="f wide"><label for="r_item">عنصر الأداء الوظيفي</label><select id="r_item" data-r="item">'+ITEMS.map(function(x,k){return '<option value="'+k+'"'+(+r.item===k?" selected":"")+'>'+AN(k+1)+'- '+x+'</option>'}).join("")+'</select></div>'+
@@ -221,28 +246,70 @@ function addPhotos(list){var r=cur(),fs=Array.prototype.slice.call(list).filter(
 function qrSVG(u){try{var q=qrcode(0,"M");q.addData(u);q.make();return q.createSvgTag({cellSize:4,margin:0})}catch(e){return ""}}
 function sheet(r,wm){var s=S.school,t=THEMES[+r.theme||0],n=r.photos.length,cls=n<=1?"n1":n===2?"n2":n===3?"n3":n===4?"n4":"n6";
  var goals=String(r.goals||"").split(/\n/).map(function(x){return x.trim()}).filter(Boolean);
- var info=[["التاريخ",r.date?dayName(r.date)+" "+hijri(r.date)+'<br><span style="font-size:8.6pt;color:#5b7476">'+greg(r.date)+'</span>':"—"],["المكان / الصف",esc(r.place)||"—"],["المستفيدون",(esc(r.benef)||"—")+(r.count?" ("+esc(r.count)+")":"")],["المنفذ",(esc(s.name)||"—")+(s.role?'<br><span style="font-size:8.6pt;color:#5b7476">'+esc(s.role)+'</span>':"")],["عنصر الأداء الوظيفي","("+AN(+r.item+1)+") "+ITEMS[+r.item]],["المدرسة",esc(s.school)||"—"]];
- var ph=n?r.photos.slice(0,6).map(function(p){return '<div style="background-image:url('+p+')"></div>'}).join(""):'<div class="ph0">أضف صور الشاهد</div>';
+ var info=[["التاريخ",r.date?dayName(r.date)+" "+hijri(r.date)+'<br><span style="font-size:8.6pt;color:#5b7476">'+greg(r.date)+'</span>':"—"],["المكان / الصف",esc(r.place)||"—"],["المستفيدون",(esc(r.benef)||"—")+(r.count?" ("+esc(r.count)+")":"")],["المنفذ/ـة",(esc(s.name)||"—")+(s.role?'<br><span style="font-size:8.6pt;color:#5b7476">'+esc(s.role)+'</span>':"")],["عنصر الأداء الوظيفي","("+AN(+r.item+1)+") "+ITEMS[+r.item]],["المدرسة",esc(s.school)||"—"]];
+ var O=S.opt||{},EM=O.empty||"msg",MS=String(O.emptyMsg||"").trim(),none=function(){return EM==="msg"&&MS?'<p class="sh-none">'+esc(MS)+'</p>':''};
+ var ph=n?r.photos.slice(0,6).map(function(p){return '<div style="background-image:url('+p+')"></div>'}).join(""):'<div class="ph0">'+(EM==="msg"?esc(MS===DEF_EMPTY?DEF_PH:MS):'')+'</div>';
+ var desc=String(r.desc||"").trim(),bx=[];
+ if(goals.length||EM!=="hide")bx.push('<div class="sh-box"><h4>الأهداف</h4>'+(goals.length?'<ul>'+goals.map(function(g){return '<li>'+esc(g)+'</li>'}).join("")+'</ul>':none())+'</div>');
+ if(desc||EM!=="hide")bx.push('<div class="sh-box"><h4>وصف التنفيذ</h4>'+(desc?'<p>'+esc(r.desc)+'</p>':none())+'</div>');
+ var sigH=function(k){var d=S.sigs&&S.sigs[k];return d?'<img class="sig-img" src="'+d+'" alt="">':'التوقيع: ............'};
  return '<div class="sheet" style="--c:'+t[0]+';--cs:'+t[1]+'">'+
  '<div class="sh-head"><div class="sh-org"><div>المملكة العربية السعودية</div><div>وزارة التعليم</div>'+(s.admin?'<div>الإدارة العامة للتعليم ب'+esc(s.admin.replace(/^ب/,""))+'</div>':"")+(s.office?'<div>'+esc(s.office)+'</div>':"")+(s.school?'<div>'+esc(s.school)+'</div>':"")+'</div><img class="logo" src="'+MOE+'" alt="وزارة التعليم"><img class="vis" src="'+VIS+'" alt="رؤية 2030"></div>'+
  '<div class="sh-title">'+(esc(r.title)||"عنوان التقرير")+'<small>تقرير توثيق شاهد</small></div>'+
  '<div class="sh-info">'+info.map(function(x){return '<div><b>'+x[0]+'</b>'+x[1]+'</div>'}).join("")+'</div>'+
- '<div class="sh-two"><div class="sh-box"><h4>الأهداف</h4><ul>'+(goals.map(function(g){return '<li>'+esc(g)+'</li>'}).join("")||"<li>—</li>")+'</ul></div><div class="sh-box"><h4>وصف التنفيذ</h4><p>'+(esc(r.desc)||"—")+'</p></div></div>'+
- '<div class="sh-photos '+cls+'">'+ph+'</div>'+
+  (bx.length?'<div class="sh-two'+(bx.length===1?' one':'')+'">'+bx.join("")+'</div>':'')+
+ (n||EM!=="hide"?'<div class="sh-photos '+cls+'">'+ph+'</div>':'<div style="flex:1"></div>')+
  (r.showResults&&r.results?'<div class="sh-box"><h4>النتائج والتوصيات</h4><p>'+esc(r.results)+'</p></div>':"")+
- '<div class="sh-foot"><div class="sh-sig"><b>المنفذ</b><span>'+esc(s.name)+'</span>التوقيع: ............</div><div class="sh-sig"><b>قائد/ة المدرسة</b><span>'+esc(s.principal)+'</span>التوقيع: ............</div>'+(r.qr?'<div class="sh-qr">'+qrSVG(r.qr)+'<span>امسح الرمز لمشاهدة بقية الشواهد</span></div>':'<div></div>')+'</div>'+
+ 
+ '<div class="sh-foot"><div class="sh-sig"><b>المنفذ/ـة</b><span>'+esc(s.name)+'</span>'+sigH("me")+'</div><div class="sh-sig"><b>قائد/ـة المدرسة</b><span>'+esc(s.principal)+'</span>'+sigH("boss")+'</div>'+(r.qr?'<div class="sh-qr">'+qrSVG(r.qr)+'<span>امسح الرمز لمشاهدة بقية الشواهد</span></div>':'<div></div>')+'</div>'+
  (wm?'<div class="sh-wm">معاينة — مجودة</div>':'')+'<div class="sh-brand">majoodah.com</div></div>'}
-function renderPreview(){var r=cur();$("#pvscale").innerHTML=sheet(r,!ACTIVE);fitPreview();$("#pvNote").textContent=ACTIVE?"":"تظهر علامة «معاينة» حتى التفعيل"}
+function renderPreview(){var r=cur();$("#pvscale").innerHTML=sheet(r,!ACTIVE);fitPreview();$("#pvNote").textContent=ACTIVE?"":"تظهر علامة «معاينة» حتى التفعيل";DIRTY=true;clearTimeout(paT);paT=setTimeout(function(){if(!PA_ALL)renderPA(false)},500)}
 function fitPreview(){var b=$("#pvbox"),s=$("#pvscale"),sh=s.firstChild;if(!sh)return;var w=b.clientWidth-24,k=Math.min(1,w/sh.offsetWidth);s.style.transform="scale("+k+")";s.style.height=(sh.offsetHeight*k)+"px";s.style.width=sh.offsetWidth+"px"}
 window.addEventListener("resize",fitPreview);
 /* ===== المدرسة ===== */
-function renderSchool(){$$("[data-s]").forEach(function(i){i.value=S.school[i.dataset.s]||"";if(!i._b){i._b=1;i.addEventListener("input",function(){S.school[i.dataset.s]=i.value;save();renderPreview()})}})}
+function renderSchool(){$$("[data-s]").forEach(function(i){i.value=S.school[i.dataset.s]||"";if(!i._b){i._b=1;i.addEventListener("input",function(){S.school[i.dataset.s]=i.value;save();renderPreview()})}});renderGender();renderSigs();syncOpt()}
+function renderGender(){$$("#genderSeg button").forEach(function(b){b.setAttribute("aria-pressed",S.school.gender===b.dataset.g?"true":"false")})}
+$$("#genderSeg button").forEach(function(b){b.addEventListener("click",function(){S.school.gender=b.dataset.g;save();renderGender();txAll();toast(b.dataset.g==="m"?"تُصاغ الألقاب بصيغة المذكر":"تُصاغ الألقاب بصيغة المؤنث")})});
+function syncOpt(){$("#optEmpty").value=S.opt.empty;$("#optEmptyMsg").value=S.opt.emptyMsg;$("#optEmptyMsg").hidden=S.opt.empty!=="msg"}
+$("#optEmpty").addEventListener("change",function(){S.opt.empty=this.value;save();syncOpt();renderPreview()});
+$("#optEmptyMsg").addEventListener("input",function(){S.opt.emptyMsg=this.value;save();renderPreview()});
+/* ===== التواقيع (رسم أو رفع صورة) ===== */
+var sigTarget=null;
+function setSig(k,d){S.sigs[k]=d;save();renderSigs();renderPreview();toast("أُضيف التوقيع")}
+function renderSigs(){var box=$("#sigSlots");box.innerHTML=[["me","توقيع المنفذ/ـة"],["boss","توقيع قائد/ـة المدرسة"]].map(function(x){var k=x[0],d=S.sigs[k];
+  return '<div class="sig-slot"><b style="font-size:13px">'+x[1]+'</b><div class="sig-prev">'+(d?'<img src="'+d+'" alt="">':'لا يوجد توقيع')+'</div><div class="row" style="gap:6px"><button type="button" class="btn small" data-sdraw="'+k+'">ارسم</button><button type="button" class="btn small" data-sup="'+k+'">رفع صورة</button>'+(d?'<button type="button" class="btn small danger" data-sdel="'+k+'">حذف</button>':'')+'</div></div>'}).join("");
+ $$("[data-sdraw]",box).forEach(function(b){b.addEventListener("click",function(){drawSig(b.dataset.sdraw)})});
+ $$("[data-sup]",box).forEach(function(b){b.addEventListener("click",function(){sigTarget=b.dataset.sup;$("#sigPick").click()})});
+ $$("[data-sdel]",box).forEach(function(b){b.addEventListener("click",function(){S.sigs[b.dataset.sdel]="";save();renderSigs();renderPreview()})})}
+function readSig(f){return new Promise(function(ok,no){var u=URL.createObjectURL(f),i=new Image();i.onload=function(){var s=Math.min(1,700/Math.max(i.width,i.height)),c=document.createElement("canvas"),png=f.type==="image/png";c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);var x=c.getContext("2d");if(!png){x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height)}x.drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL(png?"image/png":"image/jpeg",.9))};i.onerror=function(){URL.revokeObjectURL(u);no()};i.src=u})}
+$("#sigPick").addEventListener("change",function(e){var f=e.target.files[0];e.target.value="";if(!f||!sigTarget)return;readSig(f).then(function(d){setSig(sigTarget,d)}).catch(function(){toast("تعذّر قراءة الصورة")})});
+function drawSig(k){
+ var m=document.createElement("div");m.className="modal";m.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="رسم التوقيع"><h3 style="font-size:18px">ارسم توقيعك</h3><canvas width="1000" height="400"></canvas><div class="row"><button type="button" class="btn primary" data-a="ok">حفظ التوقيع</button><button type="button" class="btn" data-a="clr">مسح</button><div class="spacer"></div><button type="button" class="btn" data-a="x">إلغاء</button></div></div>';
+ document.body.appendChild(m);
+ var cv=$("canvas",m),x=cv.getContext("2d"),down=false,any=false,last=null,bb=[1e9,1e9,-1,-1];
+ x.lineCap="round";x.lineJoin="round";x.lineWidth=6;x.strokeStyle="#0b2f4a";
+ function pt(e){var r=cv.getBoundingClientRect();return [(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]}
+ function grow(p){bb[0]=Math.min(bb[0],p[0]);bb[1]=Math.min(bb[1],p[1]);bb[2]=Math.max(bb[2],p[0]);bb[3]=Math.max(bb[3],p[1])}
+ cv.addEventListener("pointerdown",function(e){e.preventDefault();down=true;last=pt(e);grow(last);try{cv.setPointerCapture(e.pointerId)}catch(_){}x.beginPath();x.arc(last[0],last[1],3,0,7);x.fillStyle="#0b2f4a";x.fill();any=true});
+ cv.addEventListener("pointermove",function(e){if(!down)return;var p=pt(e);x.beginPath();x.moveTo(last[0],last[1]);x.lineTo(p[0],p[1]);x.stroke();last=p;grow(p)});
+ ["pointerup","pointercancel","pointerleave"].forEach(function(t){cv.addEventListener(t,function(){down=false})});
+ function close(){m.remove()}
+ m.addEventListener("click",function(e){var a=e.target.getAttribute&&e.target.getAttribute("data-a");if(e.target===m||a==="x")close();
+  if(a==="clr"){x.clearRect(0,0,cv.width,cv.height);any=false;bb=[1e9,1e9,-1,-1]}
+  if(a==="ok"){if(!any){toast("ارسم التوقيع أولاً");return}var pad=14,sx=Math.max(0,bb[0]-pad),sy=Math.max(0,bb[1]-pad),w=Math.min(cv.width,bb[2]+pad)-sx,h=Math.min(cv.height,bb[3]+pad)-sy;
+   var o=document.createElement("canvas");o.width=w;o.height=h;o.getContext("2d").drawImage(cv,sx,sy,w,h,0,0,w,h);setSig(k,o.toDataURL("image/png"));close()}})}
 function renderAll(){renderList();renderEditor();renderPreview()}
 /* ===== الطباعة والصور ===== */
+/* منطقة الطباعة تُبنى مسبقاً (التقرير الحالي) ولا يُعاد بناؤها عند الطباعة إلا إن تغيّرت — حتى تُحمَّل الشعارات والصور قبل لقطة الطباعة */
+function renderPA(all){clearTimeout(paT);PA_ALL=!!all;$("#printArea").innerHTML=(all?S.reports:[cur()]).map(function(r){return sheet(r,!ACTIVE)}).join("");DIRTY=false}
+function imgsReady(root){var srcs=[];$$(".sh-photos div[style]",root).forEach(function(d){var m=/url\(["']?([^"')]+)/.exec(d.style.backgroundImage||"");if(m)srcs.push(m[1])});
+ var ims=$$("img",root).concat(srcs.map(function(s){var i=new Image();i.src=s;return i}));
+ return Promise.all(ims.map(function(im){return (im.complete&&im.naturalWidth?Promise.resolve():new Promise(function(r){im.onload=im.onerror=r;setTimeout(r,2000)})).then(function(){return im.decode?im.decode().catch(function(){}):0})}))}
 function doPrint(all){if(!ACTIVE){openAct();toast("تُطبع بعلامة «معاينة» — فعّل لإزالتها")}
- $("#printArea").innerHTML=(all?S.reports:[cur()]).map(function(r){return sheet(r,!ACTIVE)}).join("");
- setTimeout(function(){window.print()},ACTIVE?150:1000)}
-window.addEventListener("afterprint",function(){$("#printArea").innerHTML=""});
+ if(all||PA_ALL||DIRTY||!$("#printArea").innerHTML)renderPA(all);
+ imgsReady($("#printArea")).then(function(){setTimeout(function(){window.print()},ACTIVE?150:1000)})}
+window.addEventListener("beforeprint",function(){if(DIRTY||!$("#printArea").innerHTML)renderPA(PA_ALL)});
+window.addEventListener("afterprint",function(){if(PA_ALL)setTimeout(function(){renderPA(false)},50)});
 $("#btnPrint").addEventListener("click",function(){doPrint(false)});
 $("#btnAll").addEventListener("click",function(){doPrint(true)});
 $("#btnImg").addEventListener("click",function(){if(!ACTIVE){openAct();toast("حفظ الصورة يتطلب التفعيل");return}
@@ -262,7 +329,7 @@ $("#actForm").addEventListener("submit",function(e){e.preventDefault();var c=nor
 try{var h0=localStorage.getItem("mj_shawahid_act");if(h0&&HASHES.indexOf(h0)>=0)ACTIVE=true}catch(e){}
 /* ===== التشغيل ===== */
 $("#add").addEventListener("click",function(){var r=newReport();r.theme=cur()?cur().theme:0;S.reports.unshift(r);S.cur=r.id;save();renderAll();toast("تقرير جديد — اختر نوع الشاهد")});
-Promise.race([load(),new Promise(function(ok){setTimeout(function(){ok(null)},1500)})]).then(function(st){if(S)return;S=st||{school:{},reports:[]};if(!S.reports||!S.reports.length){S.reports=[newReport()]}if(!S.cur)S.cur=S.reports[0].id;S.school=S.school||{};setActive(ACTIVE);renderSchool();renderAll();if(document.fonts)document.fonts.ready.then(fitPreview)});
+Promise.race([load(),new Promise(function(ok){setTimeout(function(){ok(null)},1500)})]).then(function(st){if(S)return;S=st||{school:{},reports:[]};if(!S.reports||!S.reports.length){S.reports=[newReport()]}if(!S.cur)S.cur=S.reports[0].id;normS();setActive(ACTIVE);renderSchool();renderAll();renderPA(false);txAll();if(document.fonts)document.fonts.ready.then(fitPreview)});
 })();
 </script>
 
